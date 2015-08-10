@@ -1,0 +1,26 @@
+#!/bin/bash
+domain=$(sudo yunohost app setting rutorrent domain)
+data_dir=$(sudo yunohost app setting rutorrent data_dir)
+
+sudo service rtorrent stop
+
+sudo rm -rf /var/www/rutorrent
+sudo rm -rf $data_dir
+sudo rm -f /etc/nginx/conf.d/$domain.d/rutorrent.conf
+sudo rm -f /etc/init.d/rtorrent
+
+# Remove the user
+sudo userdel -f rtorrent
+sudo rm -rf /home/rtorrent
+
+# Remove the service
+sudo yunohost service remove rtorrent
+
+# Remove the sources
+sudo rm -f /etc/apt/sources.list.d/rutorrent.list
+
+# Remove rtorrent
+sudo rm -f /usr/local/bin/rtorrent
+
+sudo yunohost app ssowatconf
+sudo service nginx reload
