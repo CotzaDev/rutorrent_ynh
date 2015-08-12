@@ -4,6 +4,7 @@
 domain=$1
 path=$2
 data_dir=$3
+passw=$4
 current_dir=${PWD}
 debian_version=$(lsb_release -c -s)
 
@@ -92,7 +93,7 @@ sudo mkdir $data_dir/downloads
 sudo mkdir $data_dir/.session
 
 # Create rtorrent user
-sudo useradd -p $(openssl passwd -1 rtorrent) -m rtorrent
+sudo useradd -p $(openssl passwd -1 $passw) -m rtorrent
 
 # Add rtorrent config
 sudo sed -i "s@DATA_DIR@$data_dir@g" ../sources/rtorrent/rtorrent.rc

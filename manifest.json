@@ -40,6 +40,15 @@
                 },
                 "example": "/mnt/disk1/torrents",
                 "default": "/home/rtorrent"
+            },
+            {
+                "name": "password",
+                "type": "password",
+                "ask": {
+                    "en": "Choose a password for the rtorrent system user",
+                    "fr": "Choisissez un mot de passe pour l'utilisateur système rtorrent"
+                },
+                "example": "mysecret"
             }
         ]
     }
