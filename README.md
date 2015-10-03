@@ -22,7 +22,11 @@ With the install option from admin panel
 
 or from command line `sudo yunohost app install https://github.com/CotzaDev/rutorrent_ynh`
 
+Upgrade
+------
+`sudo yunohost app upgrade ruTorrent https://github.com/CotzaDev/rutorrent_ynh`
+
 Versions
 --------
 
-rtorrent v0.9.4 and libtorrent 0.13.4
+rtorrent v0.9.6 and libtorrent 0.13.6
