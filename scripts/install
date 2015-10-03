@@ -17,7 +17,14 @@ fi
 
 # Install sources
 if [ "$debian_version" = "jessie" ]; then
-  sudo apt-get install -y deb-multimedia-keyring
+  cd /tmp
+  wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2015.6.1_all.deb
+  sudo dpkg -i deb-multimedia-keyring_2015.6.1_all.deb
+  
+  if [ -f /etc/apt/sources.list.d/rutorrent.list ]; then
+    sudo rm /etc/apt/sources.list.d/rutorrent.list
+  fi
+
   echo 'deb http://ftp2.fr.debian.org/debian/ jessie main non-free' | sudo tee -a /etc/apt/sources.list.d/rutorrent.list
   echo 'deb-src http://ftp2.fr.debian.org/debian/ jessie main non-free' | sudo tee -a /etc/apt/sources.list.d/rutorrent.list
   echo 'deb ftp://ftp.deb-multimedia.org jessie main non-free' | sudo tee -a /etc/apt/sources.list.d/rutorrent.list
@@ -42,7 +49,7 @@ sudo make install
 cd /tmp
 sudo git clone https://github.com/rakshasa/libtorrent.git
 cd libtorrent
-sudo git checkout 0.13.4
+sudo git checkout 0.13.6
 sudo ./autogen.sh
 sudo ./configure
 sudo make
@@ -52,7 +59,7 @@ sudo make install
 cd /tmp
 sudo git clone https://github.com/rakshasa/rtorrent.git
 cd rtorrent
-sudo git checkout 0.9.4
+sudo git checkout 0.9.6
 sudo ./autogen.sh
 sudo ./configure --with-xmlrpc-c
 sudo make

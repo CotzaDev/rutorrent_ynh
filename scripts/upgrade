@@ -1,0 +1,25 @@
+#!/bin/bash
+
+sudo service rtorrent stop
+
+# Build libtorrent
+cd /tmp
+sudo git clone https://github.com/rakshasa/libtorrent.git
+cd libtorrent
+sudo git checkout 0.13.6
+sudo ./autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+
+# Build rtorrent
+cd /tmp
+sudo git clone https://github.com/rakshasa/rtorrent.git
+cd rtorrent
+sudo git checkout 0.9.6
+sudo ./autogen.sh
+sudo ./configure --with-xmlrpc-c
+sudo make
+sudo make install
+
+sudo service rtorrent start
