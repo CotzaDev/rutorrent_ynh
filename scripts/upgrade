@@ -17,7 +17,7 @@ sudo make install
 
 # Build rtorrent
 cd /tmp
-if [ -d libtorrent ]; then
+if [ -d rtorrent ]; then
   sudo rm -r rtorrent
 fi
 sudo git clone https://github.com/rakshasa/rtorrent.git
