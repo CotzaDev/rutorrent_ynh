@@ -30,4 +30,9 @@ sudo make install
 
 sudo ldconfig
 
+# Update ruTorrent
+cd /var/www/rutorrent
+sudo git pull
+sudo chown -R www-data:www-data /var/www/rutorrent
+
 sudo service rtorrent start
