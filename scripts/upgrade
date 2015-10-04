@@ -4,6 +4,9 @@ sudo service rtorrent stop
 
 # Build libtorrent
 cd /tmp
+if [ -d libtorrent ]; then
+  sudo rm -r libtorrent
+fi
 sudo git clone https://github.com/rakshasa/libtorrent.git
 cd libtorrent
 sudo git checkout 0.13.6
@@ -14,6 +17,9 @@ sudo make install
 
 # Build rtorrent
 cd /tmp
+if [ -d libtorrent ]; then
+  sudo rm -r rtorrent
+fi
 sudo git clone https://github.com/rakshasa/rtorrent.git
 cd rtorrent
 sudo git checkout 0.9.6
